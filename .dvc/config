@@ -1,0 +1,4 @@
+[core]
+    remote = fast_api_project
+['remote "fast_api_project"']
+    url = ..
