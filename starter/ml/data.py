@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
 
@@ -68,3 +69,16 @@ def process_data(
 
     X = np.concatenate([X_continuous, X_categorical], axis=1)
     return X, y, encoder, lb
+
+def load_data(path):
+    """
+        Function to load data from a file given
+        Parameters:
+            path - path to the data file
+        Returns:
+            data frame
+    """
+    # Load data
+    df = pd.read_csv(path)
+    # Drop nan
+    
