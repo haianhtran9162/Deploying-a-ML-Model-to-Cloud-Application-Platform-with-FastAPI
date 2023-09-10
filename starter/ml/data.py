@@ -1,6 +1,18 @@
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
+from .model import compute_model_metrics
+
+categorical_features = [
+    "workclass",
+    "education",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "native-country",
+]
 
 
 def process_data(
@@ -74,11 +86,34 @@ def load_data(path):
     """
         Function to load data from a file given
         Parameters:
-            path - path to the data file
+            path: Path to the data file: str
         Returns:
-            data frame
+            df: Input data frame for model
     """
     # Load data
     df = pd.read_csv(path)
-    # Drop nan
-    
+    return df
+
+def slide_performance(model, data, encoder, lb, categorical_features = categorical_features):
+    """
+        Function to calculate the performance of the model on slices of the data
+        Parameters:
+            model: ML model
+            data: data need calulating the performance
+            encoder: sklearn.preprocessing._encoders.OneHotEncoder
+            lb: sklearn.preprocessing._label.LabelBinarizer
+            categorical_features: the categorical features list
+        Returns:
+            file: create the file containing the results of the silde performance
+    """
+    with open('log_slice_performance.txt', 'w') as f:
+        for categorical in categorical_features:
+            for value in data[categorical].unique():
+                data_preformance = data[data[categorical]==value]
+                X,y, _, _ = process_data(data_preformance, categorical_features=categorical_features, label="salary", training=False, encoder=encoder, lb=lb)
+                y_pred = model.predict(X)
+                precision, recall, fbeta = compute_model_metrics(y, y_pred)
+                line = "Feature {value} of the Categorical{cat}: Precision:{precision} | Recall:{recall} | Fbeta:{fbeta}\n".format(categorical, value, precision, recall, fbeta)
+                f.write(line)
+    f.close()
+                
