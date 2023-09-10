@@ -14,8 +14,8 @@ categorical_features = [
     "sex",
     "native-country",
 ]
-DATA_PATH = "../data/census.csv"
-MODEL_SAVE = "../model/"
+DATA_PATH = "./data/census.csv"
+MODEL_SAVE = "./model/"
 
 # Add code to load in the data.
 print("Load dataset")
