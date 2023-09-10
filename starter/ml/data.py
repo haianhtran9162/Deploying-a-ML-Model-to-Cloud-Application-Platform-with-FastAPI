@@ -113,7 +113,7 @@ def slide_performance(model, data, encoder, lb, categorical_features = categoric
                 X,y, _, _ = process_data(data_preformance, categorical_features=categorical_features, label="salary", training=False, encoder=encoder, lb=lb)
                 y_pred = model.predict(X)
                 precision, recall, fbeta = compute_model_metrics(y, y_pred)
-                line = "Feature {value} of the Categorical{cat}: Precision:{precision} | Recall:{recall} | Fbeta:{fbeta}\n".format(categorical, value, precision, recall, fbeta)
+                line = "Feature {value} of the Categorical {cat}: Precision:{precision} | Recall:{recall} | Fbeta:{fbeta}\n".format(value = value, cat = categorical, precision = precision, recall = recall, fbeta = fbeta)
                 f.write(line)
     f.close()
                 

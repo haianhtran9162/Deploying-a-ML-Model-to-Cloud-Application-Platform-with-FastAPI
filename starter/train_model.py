@@ -1,8 +1,8 @@
 # Script to train machine learning model.
 # Add the necessary imports for the starter code.
 from sklearn.model_selection import train_test_split
-from .ml.data import process_data, load_data, slide_performance
-from .ml.model import train_model, compute_model_metrics, inference
+from ml.data import process_data, load_data, slide_performance
+from ml.model import train_model, compute_model_metrics, inference
 import joblib
 categorical_features = [
     "workclass",
@@ -14,8 +14,8 @@ categorical_features = [
     "sex",
     "native-country",
 ]
-DATA_PATH = r"data/census.csv"
-MODEL_SAVE = "model/"
+DATA_PATH = "../data/census.csv"
+MODEL_SAVE = "../model/"
 
 # Add code to load in the data.
 print("Load dataset")
@@ -45,7 +45,7 @@ print("References the model trained")
 y_pred = inference(model, X_test)
 print("Evaluation model trained")
 precision, recall, fbeta = compute_model_metrics(y_test, y_pred)
-print("Evaluation result: Precision:{precision} | Recall:{recall} | Fbeta:{fbeta}".format(precision, recall, fbeta))
+print("Evaluation result: Precision:{precision} | Recall:{recall} | Fbeta:{fbeta}".format(precision = precision, recall = recall, fbeta = fbeta))
 
 # Calculate the performance of the model on slices of the data
 print("Calculate the performance of the model on slices of the data.")
