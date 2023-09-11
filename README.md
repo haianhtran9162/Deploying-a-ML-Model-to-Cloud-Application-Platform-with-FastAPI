@@ -1,6 +1,7 @@
 Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
 
-# Environment Set up
+# Setup Guide
+## Environment Set up
 * Download and install conda if you don’t have it already.
     * Use the supplied requirements file to create a new environment, or
     * conda create -n [envname] "python=3.8" scikit-learn dvc pandas numpy pytest jupyter jupyterlab fastapi uvicorn -c conda-forge
@@ -73,3 +74,30 @@ To use your new S3 bucket from the AWS CLI you will need to create an IAM user w
 * Set up DVC on Heroku using the instructions contained in the starter directory.
 * Set up access to AWS on Heroku, if using the CLI: `heroku config:set AWS_ACCESS_KEY_ID=xxx AWS_SECRET_ACCESS_KEY=yyy`
 * Write a script that uses the requests module to do one POST on your live API.
+
+# Run Guide
+* Activate the environment
+```
+conda activate [environment_name]
+```
+* Install all required before starting
+```
+pip install -r requirements.txt 
+```
+* The EDA step had been previously processed with the notebook in the EDA folder
+## Train model
+I use the Data Versioning Controller (DVC) to versioning the dataset and the ML model. However, for mentor can easily running and check, I had been committed the dataset cleanest to the git repo already.
+
+* Train model
+```
+python starter/train_model.py
+```
+* Run pytest for the training step and the FastAPI app
+```
+pytest
+```
+* Run the FastAPI app at localhost
+```
+uvicorn main:app --reload
+```
+ 
