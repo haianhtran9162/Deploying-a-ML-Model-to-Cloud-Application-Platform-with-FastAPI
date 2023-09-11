@@ -86,7 +86,7 @@ pip install -r requirements.txt
 ```
 * The EDA step had been previously processed with the notebook in the EDA folder
 ## Train model
-I use the Data Versioning Controller (DVC) to versioning the dataset and the ML model. However, for mentor can easily running and check, I had been committed the dataset cleanest to the git repo already.
+I use the Data Versioning Controller (DVC) to versioning the dataset and the ML model. However, for mentor can easily running and check, I had been committed the dataset cleanest and the ML model to the git repo already.
 
 * Train model
 ```
