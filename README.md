@@ -92,6 +92,7 @@ I use the Data Versioning Controller (DVC) to versioning the dataset and the ML 
 ```
 python starter/train_model.py
 ```
+## Fast API app
 * Run pytest for the training step and the FastAPI app
 ```
 pytest
@@ -100,4 +101,11 @@ pytest
 ```
 uvicorn main:app --reload
 ```
- 
+* The web server deployed using Render service
+```
+https://udacity-mlops-p3-anhth.onrender.com/docs#/
+```
+* Requests module to do one POST on your live API. 
+```
+python request_post_live_API.py
+```
